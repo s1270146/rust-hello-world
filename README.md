@@ -9,6 +9,9 @@
   - [Hello World!](#hello-world)
   - [How to use Cargo](#how-to-use-cargo)
   - [Different from other languages](#different-from-other-languages)
+  - [Ownership](#ownership)
+    - [領域](#領域)
+    - [所有権規則](#所有権規則)
 
 ## Install
 
@@ -49,3 +52,23 @@ rustc main.rs
   - 例えば、Cなら``x = y = 6;``と書いて、``x``と``y``に``6``が代入される
   - 一方でRustでは``let x = (let y = 6);``であるとエラーになる
 - if文で条件式に必ず論理値を与えないといけない
+
+## Ownership
+
+### 領域
+- スタック
+  - 固定サイズのデータを格納
+- ヒープ
+  - サイズ可変のデータを格納
+  - 領域確保をallocateすると言う
+- 比較
+  - **アクセス速度**: スタック>ヒープ
+- 関数が呼び出されたときに変数がスタック(or ヒープ)に格納される
+- 関数の実行が終了すると覗かれる
+
+### 所有権規則
+
+- 各値は**所有者**(変数)と対応している
+- 値に対し所有者は一つ
+- 所有者がスコープから外れたら破棄
+
